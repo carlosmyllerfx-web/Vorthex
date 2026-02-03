@@ -1,186 +1,72 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VORTHEX Key Generator</title>
-  <style>
-    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif;}
-    body {
-      background: linear-gradient(135deg, #0f0f14, #1a0a0f);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-    }
-    h1 {
-      color: #ff6b35;
-      font-size: 32px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .card {
-      background: #16161d;
-      border: 3px solid #ff6b35;
-      border-radius: 14px;
-      padding: 24px;
-      max-width: 600px;
-      width: 100%;
-      margin: 20px 0;
-    }
-    .step {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #1c1c25;
-      border: 1px solid #2a2a35;
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 10px;
-    }
-    .btn {
-      padding: 10px 16px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn.primary { background: #ff6b35; color: white; }
-    .btn.primary:hover { background: #ff8533; }
-    .btn.secondary { background: #2a2a35; color: white; }
-    .btn.secondary:hover { background: #3a3a45; }
-    .btn.disabled { opacity: 0.5; cursor: not-allowed; }
-    .key-display {
-      background: #0b0b10;
-      border: 1px solid #3a3a3a;
-      border-radius: 10px;
-      padding: 12px;
-      color: #0f0;
-      font-family: monospace;
-      margin-top: 12px;
-      min-height: 50px;
-      white-space: pre-wrap;
-    }
-    .info { font-size: 12px; color: #aaa; margin-top: 10px; text-align: center; }
-    .ok { color: #64ff96; font-weight: bold; }
-    .icon {
-      width: 20px;
-      height: 20px;
-      vertical-align: middle;
-    }
-    .warn { color: #ff6b6b; font-size: 14px; margin-top: 8px; display: none; text-align: center; }
-  </style>
-</head>
-<body>
-  <h1>⚡ VORTHEX Key System ⚡</h1>
+</header>
 
-  <div class="card">
-    <div class="step">
-      <span><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" class="icon" /> YouTube @Vorthex</span>
-      <button id="btnYT" class="btn primary"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YT" class="icon" /> Acessar</button>
-    </div>
-    <div id="ytStatus" class="ok" style="display: none;">✓ Concluído!</div>
-    <div id="ytWarn" class="warn">⏳ Complete a etapa toda (aguarde 10 segundos)</div>
+<div class="card">
+            <h2 style="color: #ff3232; margin-bottom: 20px;">📜 Script Loadstring</h2>
+            <h2 style="color: #ff3232; margin-bottom: 20px;">Carregar Script</h2>
+<div class="script-box">
+                <div class="script-code">loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</div>
+                <button class="copy-btn" onclick="copyScript()">COPIAR SCRIPT</button>
+                <div class="script-code" id="loadstring">loadstring(game:HttpGet("https://pastebin.com/raw/SPZ1NvDi"))()</div>
+                <button class="copy-btn" id="copy-loadstring">Copiar Loadstring</button>
+</div>
+            <h2 style="color: #ff3232; margin: 20px 0;">Key IP-locked</h2>
+            <a href="./key_steps.html" class="copy-btn" target="_blank" rel="noopener">Abrir Site da Key</a>
+</div>
 
-    <div class="step">
-      <span><img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="Discord" class="icon" /> Entrar no Discord</span>
-      <button id="btnDC" class="btn primary"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="DC" class="icon" /> Entrar</button>
-    </div>
-    <div id="dcStatus" class="ok" style="display: none;">✓ Concluído!</div>
-    <div id="dcWarn" class="warn">⏳ Complete a etapa toda (aguarde 10 segundos)</div>
-  </div>
+<div class="warning">
+@@ -228,7 +230,11 @@ <h2 style="color: #ff3232; margin-bottom: 20px;">🎮 Keybinds</h2>
+<div class="keybinds">
+<div class="keybind">
+<span>Abrir/Fechar GUI</span>
+                    <span class="key">K</span>
+                    <span class="key">T</span>
+                </div>
+                <div class="keybind">
+                    <span>Backstab</span>
+                    <span class="key">Q</span>
+</div>
+<div class="keybind">
+<span>Fly</span>
+@@ -244,7 +250,7 @@ <h2 style="color: #ff3232; margin-bottom: 20px;">🎮 Keybinds</h2>
+</div>
+</div>
+</div>
 
-  <div class="card">
-    <button id="btnGen" class="btn primary disabled">🎯 Gerar Key (24h)</button>
-    <button id="btnCopy" class="btn secondary" style="margin-left: 10px">📋 Copiar</button>
-    <div id="keyBox" class="key-display">Clique em YouTube + Discord primeiro.</div>
-  </div>
+        
+<div class="card">
+<h2 style="color: #ff3232; margin-bottom: 20px;">✨ Features</h2>
+<div class="features">
+@@ -274,7 +280,6 @@ <h3>MISC</h3>
+</div>
 
-  <script>
-    const ytLink = "https://www.youtube.com/@Vorthex-k5n";
-    const dcLink = "https://discord.gg/vorthexbr";
+<script>
+        // Criar estrelas
+const starsContainer = document.getElementById('stars');
+for (let i = 0; i < 100; i++) {
+const star = document.createElement('div');
+@@ -284,21 +289,11 @@ <h3>MISC</h3>
+star.style.animationDelay = Math.random() * 3 + 's';
+starsContainer.appendChild(star);
+}
 
-    let ytOk = false, dcOk = false;
-    let ytStart = 0, dcStart = 0;
-
-    const updateButton = () => {
-      const genBtn = document.getElementById("btnGen");
-      if (ytOk && dcOk) genBtn.classList.remove("disabled");
-    };
-
-    document.getElementById("btnYT").onclick = () => {
-      ytStart = Date.now();
-      window.open(ytLink, '_blank');
-
-      setTimeout(() => {
-        const now = Date.now();
-        if (now - ytStart >= 10000) {
-          ytOk = true;
-          document.getElementById("ytStatus").style.display = "block";
-          document.getElementById("ytWarn").style.display = "none";
-          updateButton();
-        } else {
-          document.getElementById("ytWarn").style.display = "block";
+        // Copiar script
+        function copyScript() {
+            const script = 'loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()';
+            navigator.clipboard.writeText(script).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'COPIADO! ✓';
+                btn.style.background = 'linear-gradient(135deg, #00ff00, #00aa00)';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = 'linear-gradient(135deg, #ff0000, #ff3232)';
+                }, 2000);
+            });
         }
-      }, 1000);
-    };
-
-    document.getElementById("btnDC").onclick = () => {
-      dcStart = Date.now();
-      window.open(dcLink, '_blank');
-
-      setTimeout(() => {
-        const now = Date.now();
-        if (now - dcStart >= 10000) {
-          dcOk = true;
-          document.getElementById("dcStatus").style.display = "block";
-          document.getElementById("dcWarn").style.display = "none";
-          updateButton();
-        } else {
-          document.getElementById("dcWarn").style.display = "block";
-        }
-      }, 1000);
-    };
-
-    document.getElementById("btnGen").onclick = async () => {
-      if (!(ytOk && dcOk)) return;
-
-      const keyEl = document.getElementById("keyBox");
-      const existing = localStorage.getItem('vorthex_key');
-      const savedTime = localStorage.getItem('vorthex_key_time');
-
-      if (existing && savedTime && Date.now() - parseInt(savedTime) < 86400000) {
-        keyEl.innerHTML = `★ ${existing} ★\n<small>Key já gerada neste navegador (válida por 24h)</small>`;
-        return;
-      }
-
-      keyEl.innerHTML = "⏳ Gerando key segura...";
-
-      setTimeout(() => {
-        const timestamp = Date.now();
-        const userHash = btoa(navigator.userAgent.substring(0,12)).substring(0,6);
-        const uniqueId = Math.random().toString(36).substring(2, 6).toUpperCase();
-        const key = `VORTHEX-L8-${userHash}-${uniqueId}-${timestamp.toString().slice(-4)}`;
-
-        keyEl.innerHTML = `★ ${key} ★\n<small>Validade: 24h | ID: ${userHash}</small>`;
-
-        localStorage.setItem('vorthex_key', key);
-        localStorage.setItem('vorthex_key_time', timestamp.toString());
-      }, 1500);
-    };
-
-    document.getElementById("btnCopy").onclick = async () => {
-      const text = document.getElementById("keyBox").textContent.trim();
-      if (text.includes("★")) {
-        await navigator.clipboard.writeText(text);
-        document.getElementById("keyBox").innerHTML += '\n<span class="ok">✓ Copiada!</span>';
-      }
-    };
-  </script>
+        document.getElementById('copy-loadstring').onclick = async () => {
+            const text = document.getElementById('loadstring').textContent.trim();
+            try { await navigator.clipboard.writeText(text); } catch {}
+        };
+</script>
 </body>
 </html>
