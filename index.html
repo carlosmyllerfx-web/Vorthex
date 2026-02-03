@@ -46,6 +46,9 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .btn.primary { background: #ff6b35; color: white; }
     .btn.primary:hover { background: #ff8533; }
@@ -65,6 +68,12 @@
     }
     .info { font-size: 12px; color: #aaa; margin-top: 10px; text-align: center; }
     .ok { color: #64ff96; font-weight: bold; }
+    .icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+    .warn { color: #ff6b6b; font-size: 14px; margin-top: 8px; display: none; text-align: center; }
   </style>
 </head>
 <body>
@@ -72,23 +81,25 @@
 
   <div class="card">
     <div class="step">
-      <span>📺 YouTube @CarlosVorthex</span>
-      <button id="btnYT" class="btn primary">➡️ Acessar</button>
+      <span><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" class="icon" /> YouTube @CarlosVorthex</span>
+      <button id="btnYT" class="btn primary"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YT" class="icon" /> Acessar</button>
     </div>
     <div id="ytStatus" class="ok" style="display: none;">✓ Concluído!</div>
+    <div id="ytWarn" class="warn">⏳ Complete a etapa toda (aguarde 10 segundos)</div>
 
     <div class="step">
-      <span>💬 Entrar no Discord</span>
-      <button id="btnDC" class="btn primary">➡️ Entrar</button>
+      <span><img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="Discord" class="icon" /> Entrar no Discord</span>
+      <button id="btnDC" class="btn primary"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="DC" class="icon" /> Entrar</button>
     </div>
     <div id="dcStatus" class="ok" style="display: none;">✓ Concluído!</div>
+    <div id="dcWarn" class="warn">⏳ Complete a etapa toda (aguarde 10 segundos)</div>
   </div>
 
   <div class="card">
     <button id="btnGen" class="btn primary disabled">🎯 Gerar Key (24h)</button>
     <button id="btnCopy" class="btn secondary" style="margin-left: 10px">📋 Copiar</button>
     <div id="keyBox" class="key-display">Clique em YouTube + Discord primeiro.</div>
-    <div class="info">Key local com simulação de IP-lock e validade • Xeno L8 • Blade Ball OP</div>
+    <div class="info">Key local com simulação de IP-lock e validade • Blade Ball OP</div>
   </div>
 
   <script>
@@ -96,6 +107,7 @@
     const dcLink = "https://discord.gg/vorthexbr";
 
     let ytOk = false, dcOk = false;
+    let ytStart = 0, dcStart = 0;
 
     const updateButton = () => {
       const genBtn = document.getElementById("btnGen");
@@ -103,17 +115,37 @@
     };
 
     document.getElementById("btnYT").onclick = () => {
+      ytStart = Date.now();
       window.open(ytLink, '_blank');
-      ytOk = true;
-      document.getElementById("ytStatus").style.display = "block";
-      updateButton();
+
+      setTimeout(() => {
+        const now = Date.now();
+        if (now - ytStart >= 10000) {
+          ytOk = true;
+          document.getElementById("ytStatus").style.display = "block";
+          document.getElementById("ytWarn").style.display = "none";
+          updateButton();
+        } else {
+          document.getElementById("ytWarn").style.display = "block";
+        }
+      }, 1000);
     };
 
     document.getElementById("btnDC").onclick = () => {
+      dcStart = Date.now();
       window.open(dcLink, '_blank');
-      dcOk = true;
-      document.getElementById("dcStatus").style.display = "block";
-      updateButton();
+
+      setTimeout(() => {
+        const now = Date.now();
+        if (now - dcStart >= 10000) {
+          dcOk = true;
+          document.getElementById("dcStatus").style.display = "block";
+          document.getElementById("dcWarn").style.display = "none";
+          updateButton();
+        } else {
+          document.getElementById("dcWarn").style.display = "block";
+        }
+      }, 1000);
     };
 
     document.getElementById("btnGen").onclick = async () => {
@@ -136,7 +168,7 @@
         const uniqueId = Math.random().toString(36).substring(2, 6).toUpperCase();
         const key = `VORTHEX-L8-${userHash}-${uniqueId}-${timestamp.toString().slice(-4)}`;
 
-        keyEl.innerHTML = `★ ${key} ★\n<small>Xeno L8 | 24h | ID: ${userHash}</small>`;
+        keyEl.innerHTML = `★ ${key} ★\n<small>Validade: 24h | ID: ${userHash}</small>`;
 
         localStorage.setItem('vorthex_key', key);
         localStorage.setItem('vorthex_key_time', timestamp.toString());
