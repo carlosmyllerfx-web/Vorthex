@@ -211,11 +211,13 @@
         </header>
 
         <div class="card">
-            <h2 style="color: #ff3232; margin-bottom: 20px;">📜 Script Loadstring</h2>
+            <h2 style="color: #ff3232; margin-bottom: 20px;">Carregar Script</h2>
             <div class="script-box">
-                <div class="script-code">loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</div>
-                <button class="copy-btn" onclick="copyScript()">COPIAR SCRIPT</button>
+                <div class="script-code" id="loadstring">loadstring(game:HttpGet("https://pastebin.com/raw/SPZ1NvDi"))()</div>
+                <button class="copy-btn" id="copy-loadstring">Copiar Loadstring</button>
             </div>
+            <h2 style="color: #ff3232; margin: 20px 0;">Key IP-locked</h2>
+            <a href="./key_steps.html" class="copy-btn" target="_blank" rel="noopener">Abrir Site da Key</a>
         </div>
 
         <div class="warning">
@@ -228,7 +230,11 @@
             <div class="keybinds">
                 <div class="keybind">
                     <span>Abrir/Fechar GUI</span>
-                    <span class="key">K</span>
+                    <span class="key">T</span>
+                </div>
+                <div class="keybind">
+                    <span>Backstab</span>
+                    <span class="key">Q</span>
                 </div>
                 <div class="keybind">
                     <span>Fly</span>
@@ -244,7 +250,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="card">
             <h2 style="color: #ff3232; margin-bottom: 20px;">✨ Features</h2>
             <div class="features">
@@ -274,7 +280,6 @@
     </div>
 
     <script>
-        // Criar estrelas
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
@@ -284,21 +289,11 @@
             star.style.animationDelay = Math.random() * 3 + 's';
             starsContainer.appendChild(star);
         }
-
-        // Copiar script
-        function copyScript() {
-            const script = 'loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()';
-            navigator.clipboard.writeText(script).then(() => {
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = 'COPIADO! ✓';
-                btn.style.background = 'linear-gradient(135deg, #00ff00, #00aa00)';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.style.background = 'linear-gradient(135deg, #ff0000, #ff3232)';
-                }, 2000);
-            });
-        }
+        document.getElementById('copy-loadstring').onclick = async () => {
+            const text = document.getElementById('loadstring').textContent.trim();
+            try { await navigator.clipboard.writeText(text); } catch {}
+        };
     </script>
 </body>
 </html>
+
