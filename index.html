@@ -2,86 +2,138 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VORTHEX - Script GUI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VORTHEX HUB</title>
   <style>
     body {
       background-color: #0d0d0d;
-      color: #ffffff;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 20px;
-      animation: fadeIn 1s ease-in-out;
+      text-shadow: 0 0 3px #000;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+
+    h1, h2 {
+      color: #ff004d;
+      margin-top: 20px;
     }
-    h1, h2, h3 {
-      color: #00ffff;
+
+    .section {
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #ff004d33;
+      transition: transform 0.2s ease;
     }
+
+    .section:hover {
+      transform: scale(1.02);
+    }
+
+    button {
+      background-color: #ff004d;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e6003a;
+    }
+
     a {
-      color: #1e90ff;
+      color: #00d0ff;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
-    .section {
-      margin-bottom: 30px;
+
+    .icon-links {
+      margin-top: 20px;
     }
-    .icon {
-      margin-right: 10px;
+
+    .icon-links a {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 24px;
     }
-    button {
-      background-color: #1e1e1e;
-      color: #00ffff;
-      border: 1px solid #00ffff;
-      padding: 5px 10px;
-      margin-top: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
+
+    .icon-links img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
     }
-    button:hover {
-      background-color: #00ffff;
-      color: #0d0d0d;
+
+    .warning {
+      color: #ffaa00;
+      margin-top: 10px;
+      font-weight: bold;
+      display: none;
     }
   </style>
 </head>
 <body>
+  <h1>📜 Script Vorthex</h1>
+
   <div class="section">
-    <h1>📜 Script Loadstring</h1>
     <h2>Carregar Script</h2>
-    <pre id="script1">loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</pre>
-    <button onclick="copyToClipboard('script1')">COPIAR SCRIPT</button><br><br>
-    <pre id="script2">loadstring(game:HttpGet("https://pastebin.com/raw/SPZ1NvDi"))()</pre>
-    <button onclick="copyToClipboard('script2')">Copiar Loadstring</button>
+    <code>loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</code><br/>
+    <button onclick="copyScript()">📋 Copiar Script</button>
   </div>
 
   <div class="section">
-    <h2 style="color: #ff4d4d;">🔐 Key IP-locked</h2>
-    <a href="https://carlosmyllerfx-web.github.io/key-link/" target="_blank">Abrir Site da Key</a>
-    <p>@@ -228,7 +230,11 @@</p>
+    <h2>🔐 Key System</h2>
+    <a href="https://carlosmyllerfx-web.github.io/key-link/" target="_blank">👉 Abrir Site da Key</a><br/>
+    <span id="ip-lock-status">IP Locked: @ @ -228,7 +230,11 @ @</span>
   </div>
 
   <div class="section">
     <h2>🎮 Keybinds</h2>
-    <p>Abrir/Fechar GUI: <strong>K</strong> <strong>T</strong><br>
-    Backstab: <strong>Q</strong><br>
+    <p>Abrir GUI: <strong>K</strong><br/>
+    Backstab: <strong>Q</strong><br/>
     Fly: <strong>@@ -244,7 +250,7 @@</strong></p>
   </div>
 
   <div class="section">
-    <h2>🛠️ Features</h2>
-    <p>@@ -274,7 +280,6 @@</p>
-    <strong>MISC</strong>
+    <h2>✨ Features</h2>
+    <p>Funções exclusivas ativadas após key</p>
   </div>
 
+  <div class="icon-links">
+    <a href="https://www.youtube.com/@Vorthex-k5n" target="_blank" title="Canal YouTube">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+    </a>
+    <a href="https://discord.com" target="_blank" title="Servidor Discord">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />
+    </a>
+  </div>
+
+  <div class="warning" id="warningText">⚠️ Complete a etapa toda antes de voltar.</div>
+
   <script>
-    function copyToClipboard(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(() => alert('Copiado!'));
+    function copyScript() {
+      const script = `loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()`;
+      navigator.clipboard.writeText(script);
+      alert("Script copiado!");
     }
+
+    let stepStartedAt = Date.now();
+
+    window.addEventListener('focus', () => {
+      const now = Date.now();
+      if (now - stepStartedAt < 10000) {
+        document.getElementById('warningText').style.display = 'block';
+      } else {
+        document.getElementById('warningText').style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
