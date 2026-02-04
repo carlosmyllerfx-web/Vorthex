@@ -1,114 +1,184 @@
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-  }
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VORTHEX GUI - Script & Key</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #0b0b0f, #1a0a0f);
+      color: #fff;
+      padding: 40px 20px;
+      min-height: 100vh;
+      background-attachment: fixed;
+    }
+    h2 {
+      color: #ff3232;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: #16161d;
+      border: 2px solid #ff3232;
+      border-radius: 14px;
+      padding: 24px;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+    .script-box {
+      background: #0b0b10;
+      border: 1px solid #3a3a3a;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .script-code {
+      background: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 10px;
+      border-radius: 8px;
+      word-break: break-all;
+    }
+    .copy-btn {
+      background: #ff3232;
+      border: none;
+      color: #fff;
+      padding: 10px 16px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .copy-btn:hover {
+      background: #ff5555;
+    }
+    a.copy-btn {
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+    }
+    .keybinds, .features {
+      margin-top: 20px;
+    }
+    .keybind {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+    }
+    .key {
+      background: #333;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
 
-  body {
-    background: linear-gradient(135deg, #0b0c10, #1f1f1f);
-    color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    transition: background 0.5s ease;
-  }
+  <div class="card">
+    <h2>📜 Script Loadstring</h2>
+    <h2>Carregar Script</h2>
+    <div class="script-box">
+      <div class="script-code" id="script1">loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</div>
+      <button class="copy-btn" onclick="copyToClipboard('script1')">COPIAR SCRIPT</button>
+    </div>
+    <div class="script-box">
+      <div class="script-code" id="script2">loadstring(game:HttpGet("https://pastebin.com/raw/SPZ1NvDi"))()</div>
+      <button class="copy-btn" onclick="copyToClipboard('script2')">COPIAR LOADSTRING</button>
+    </div>
+  </div>
 
-  h1, h2 {
-    color: #ff3232;
-    text-align: center;
-    transition: color 0.4s ease;
-  }
+  <div class="card">
+    <h2>🔐 Key IP-locked</h2>
+    <a href="./key_steps.html" class="copy-btn" target="_blank">Abrir Site da Key</a>
+  </div>
 
-  .card {
-    background: #151515;
-    border: 2px solid #ff3232;
-    border-radius: 12px;
-    padding: 24px;
-    max-width: 700px;
-    width: 100%;
-    margin: 20px 0;
-    animation: fadeIn 1s ease forwards;
-  }
+  <div class="card">
+    <h2>🎮 Keybinds</h2>
+    <div class="keybinds">
+      <div class="keybind">
+        <span>Abrir/Fechar GUI</span>
+        <span class="key">K</span>
+        <span class="key">T</span>
+      </div>
+      <div class="keybind">
+        <span>Backstab</span>
+        <span class="key">Q</span>
+      </div>
+      <div class="keybind">
+        <span>Fly</span>
+        <span class="key">F</span>
+      </div>
+    </div>
+  </div>
 
-  .script-box {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 16px;
-    margin-top: 10px;
-    animation: fadeIn 1s ease forwards;
-  }
+  <div class="card">
+    <h2>✨ Features</h2>
+    <div class="features">
+      <ul>
+        <li>Aimbot com tracking</li>
+        <li>Kill Aura</li>
+        <li>ESP Inimigo</li>
+        <li>Auto Parry & Auto Dash</li>
+        <li>Key IP Lock 24h</li>
+      </ul>
+    </div>
+  </div>
 
-  .script-code {
-    background: #0f0f0f;
-    border: 1px solid #444;
-    padding: 10px;
-    border-radius: 8px;
-    color: #00ff88;
-    font-family: monospace;
-    font-size: 14px;
-    word-wrap: break-word;
-    margin-bottom: 8px;
-    transition: all 0.3s ease;
-  }
+  <script>
+    function copyToClipboard(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        const original = btn.textContent;
+        btn.textContent = 'COPIADO! ✓';
+        btn.style.background = '#00aa00';
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.style.background = '#ff3232';
+        }, 2000);
+      });
+    }
 
-  .copy-btn {
-    background: linear-gradient(135deg, #ff3232, #aa0000);
-    border: none;
-    color: #fff;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
-    margin-top: 4px;
-  }
-
-  .copy-btn:hover {
-    background: linear-gradient(135deg, #ff5555, #cc0000);
-    transform: scale(1.05);
-  }
-
-  .warning {
-    color: #ffaaaa;
-    background: #2a0d0d;
-    padding: 10px;
-    border-left: 4px solid #ff3232;
-    margin-top: 20px;
-    animation: fadeIn 1s ease forwards;
-  }
-
-  .keybinds {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 10px;
-  }
-
-  .keybind {
-    display: flex;
-    justify-content: space-between;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 6px;
-    padding: 8px 12px;
-    color: #f8f8f8;
-  }
-
-  .key {
-    background: #ff3232;
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
+    // Criar estrelas animadas
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 120; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      starsContainer.appendChild(star);
+    }
+  </script>
+</body>
+</html>
