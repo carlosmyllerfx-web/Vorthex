@@ -1,183 +1,86 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VORTHEX GUI - Script & Key</title>
+  <title>VORTHEX - Script GUI</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
     body {
-      background: linear-gradient(135deg, #0b0b0f, #1a0a0f);
-      color: #fff;
-      padding: 40px 20px;
-      min-height: 100vh;
-      background-attachment: fixed;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
     }
-    h2 {
-      color: #ff3232;
-      margin-bottom: 20px;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    .card {
-      background: #16161d;
-      border: 2px solid #ff3232;
-      border-radius: 14px;
-      padding: 24px;
-      max-width: 700px;
-      margin: 20px auto;
+    h1, h2, h3 {
+      color: #00ffff;
     }
-    .script-box {
-      background: #0b0b10;
-      border: 1px solid #3a3a3a;
-      border-radius: 10px;
-      padding: 16px;
-      margin-bottom: 16px;
-    }
-    .script-code {
-      background: #000;
-      color: #0f0;
-      font-family: monospace;
-      padding: 10px;
-      border-radius: 8px;
-      word-break: break-all;
-    }
-    .copy-btn {
-      background: #ff3232;
-      border: none;
-      color: #fff;
-      padding: 10px 16px;
-      margin-top: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .copy-btn:hover {
-      background: #ff5555;
-    }
-    a.copy-btn {
-      display: inline-block;
+    a {
+      color: #1e90ff;
       text-decoration: none;
-      text-align: center;
     }
-    .keybinds, .features {
-      margin-top: 20px;
+    a:hover {
+      text-decoration: underline;
     }
-    .keybind {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid #333;
+    .section {
+      margin-bottom: 30px;
     }
-    .key {
-      background: #333;
-      padding: 4px 10px;
-      border-radius: 4px;
+    .icon {
+      margin-right: 10px;
     }
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      z-index: -1;
+    button {
+      background-color: #1e1e1e;
+      color: #00ffff;
+      border: 1px solid #00ffff;
+      padding: 5px 10px;
+      margin-top: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
     }
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 2s infinite;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
+    button:hover {
+      background-color: #00ffff;
+      color: #0d0d0d;
     }
   </style>
 </head>
 <body>
-  <div class="stars" id="stars"></div>
-
-  <div class="card">
-    <h2>📜 Script Loadstring</h2>
+  <div class="section">
+    <h1>📜 Script Loadstring</h1>
     <h2>Carregar Script</h2>
-    <div class="script-box">
-      <div class="script-code" id="script1">loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</div>
-      <button class="copy-btn" onclick="copyToClipboard('script1')">COPIAR SCRIPT</button>
-    </div>
-    <div class="script-box">
-      <div class="script-code" id="script2">loadstring(game:HttpGet("https://pastebin.com/raw/SPZ1NvDi"))()</div>
-      <button class="copy-btn" onclick="copyToClipboard('script2')">COPIAR LOADSTRING</button>
-    </div>
+    <pre id="script1">loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</pre>
+    <button onclick="copyToClipboard('script1')">COPIAR SCRIPT</button><br><br>
+    <pre id="script2">loadstring(game:HttpGet("https://pastebin.com/raw/SPZ1NvDi"))()</pre>
+    <button onclick="copyToClipboard('script2')">Copiar Loadstring</button>
   </div>
 
-  <div class="card">
-    <h2>🔐 Key IP-locked</h2>
-    <a href="./key_steps.html" class="copy-btn" target="_blank">Abrir Site da Key</a>
+  <div class="section">
+    <h2 style="color: #ff4d4d;">🔐 Key IP-locked</h2>
+    <a href="https://carlosmyllerfx-web.github.io/key-link/" target="_blank">Abrir Site da Key</a>
+    <p>@@ -228,7 +230,11 @@</p>
   </div>
 
-  <div class="card">
+  <div class="section">
     <h2>🎮 Keybinds</h2>
-    <div class="keybinds">
-      <div class="keybind">
-        <span>Abrir/Fechar GUI</span>
-        <span class="key">K</span>
-        <span class="key">T</span>
-      </div>
-      <div class="keybind">
-        <span>Backstab</span>
-        <span class="key">Q</span>
-      </div>
-      <div class="keybind">
-        <span>Fly</span>
-        <span class="key">F</span>
-      </div>
-    </div>
+    <p>Abrir/Fechar GUI: <strong>K</strong> <strong>T</strong><br>
+    Backstab: <strong>Q</strong><br>
+    Fly: <strong>@@ -244,7 +250,7 @@</strong></p>
   </div>
 
-  <div class="card">
-    <h2>✨ Features</h2>
-    <div class="features">
-      <ul>
-        <li>Aimbot com tracking</li>
-        <li>Kill Aura</li>
-        <li>ESP Inimigo</li>
-        <li>Auto Parry & Auto Dash</li>
-        <li>Key IP Lock 24h</li>
-      </ul>
-    </div>
+  <div class="section">
+    <h2>🛠️ Features</h2>
+    <p>@@ -274,7 +280,6 @@</p>
+    <strong>MISC</strong>
   </div>
 
   <script>
     function copyToClipboard(id) {
-      const text = document.getElementById(id).textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = event.target;
-        const original = btn.textContent;
-        btn.textContent = 'COPIADO! ✓';
-        btn.style.background = '#00aa00';
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.style.background = '#ff3232';
-        }, 2000);
-      });
-    }
-
-    // Criar estrelas animadas
-    const starsContainer = document.getElementById('stars');
-    for (let i = 0; i < 120; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.animationDelay = Math.random() * 3 + 's';
-      starsContainer.appendChild(star);
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => alert('Copiado!'));
     }
   </script>
 </body>
