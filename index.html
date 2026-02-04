@@ -1,72 +1,114 @@
-</header>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
 
-<div class="card">
-            <h2 style="color: #ff3232; margin-bottom: 20px;">📜 Script Loadstring</h2>
-            <h2 style="color: #ff3232; margin-bottom: 20px;">Carregar Script</h2>
-<div class="script-box">
-                <div class="script-code">loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</div>
-                <button class="copy-btn" onclick="copyScript()">COPIAR SCRIPT</button>
-                <div class="script-code" id="loadstring">loadstring(game:HttpGet("https://pastebin.com/raw/SPZ1NvDi"))()</div>
-                <button class="copy-btn" id="copy-loadstring">Copiar Loadstring</button>
-</div>
-            <h2 style="color: #ff3232; margin: 20px 0;">Key IP-locked</h2>
-            <a href="./key_steps.html" class="copy-btn" target="_blank" rel="noopener">Abrir Site da Key</a>
-</div>
+  body {
+    background: linear-gradient(135deg, #0b0c10, #1f1f1f);
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    transition: background 0.5s ease;
+  }
 
-<div class="warning">
-@@ -228,7 +230,11 @@ <h2 style="color: #ff3232; margin-bottom: 20px;">🎮 Keybinds</h2>
-<div class="keybinds">
-<div class="keybind">
-<span>Abrir/Fechar GUI</span>
-                    <span class="key">K</span>
-                    <span class="key">T</span>
-                </div>
-                <div class="keybind">
-                    <span>Backstab</span>
-                    <span class="key">Q</span>
-</div>
-<div class="keybind">
-<span>Fly</span>
-@@ -244,7 +250,7 @@ <h2 style="color: #ff3232; margin-bottom: 20px;">🎮 Keybinds</h2>
-</div>
-</div>
-</div>
+  h1, h2 {
+    color: #ff3232;
+    text-align: center;
+    transition: color 0.4s ease;
+  }
 
-        
-<div class="card">
-<h2 style="color: #ff3232; margin-bottom: 20px;">✨ Features</h2>
-<div class="features">
-@@ -274,7 +280,6 @@ <h3>MISC</h3>
-</div>
+  .card {
+    background: #151515;
+    border: 2px solid #ff3232;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 700px;
+    width: 100%;
+    margin: 20px 0;
+    animation: fadeIn 1s ease forwards;
+  }
 
-<script>
-        // Criar estrelas
-const starsContainer = document.getElementById('stars');
-for (let i = 0; i < 100; i++) {
-const star = document.createElement('div');
-@@ -284,21 +289,11 @@ <h3>MISC</h3>
-star.style.animationDelay = Math.random() * 3 + 's';
-starsContainer.appendChild(star);
-}
+  .script-box {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 10px;
+    animation: fadeIn 1s ease forwards;
+  }
 
-        // Copiar script
-        function copyScript() {
-            const script = 'loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()';
-            navigator.clipboard.writeText(script).then(() => {
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = 'COPIADO! ✓';
-                btn.style.background = 'linear-gradient(135deg, #00ff00, #00aa00)';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.style.background = 'linear-gradient(135deg, #ff0000, #ff3232)';
-                }, 2000);
-            });
-        }
-        document.getElementById('copy-loadstring').onclick = async () => {
-            const text = document.getElementById('loadstring').textContent.trim();
-            try { await navigator.clipboard.writeText(text); } catch {}
-        };
-</script>
-</body>
-</html>
+  .script-code {
+    background: #0f0f0f;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 8px;
+    color: #00ff88;
+    font-family: monospace;
+    font-size: 14px;
+    word-wrap: break-word;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .copy-btn {
+    background: linear-gradient(135deg, #ff3232, #aa0000);
+    border: none;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    margin-top: 4px;
+  }
+
+  .copy-btn:hover {
+    background: linear-gradient(135deg, #ff5555, #cc0000);
+    transform: scale(1.05);
+  }
+
+  .warning {
+    color: #ffaaaa;
+    background: #2a0d0d;
+    padding: 10px;
+    border-left: 4px solid #ff3232;
+    margin-top: 20px;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .keybinds {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .keybind {
+    display: flex;
+    justify-content: space-between;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #f8f8f8;
+  }
+
+  .key {
+    background: #ff3232;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
