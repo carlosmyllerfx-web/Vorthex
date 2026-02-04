@@ -3,178 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VORTHEX - Script Loader</title>
+  <title>VORTHEX - Script Hub</title>
   <style>
     body {
-      margin: 0;
-      background: #0f0f14;
+      background: linear-gradient(135deg, #0f0f14, #1a0a0f);
+      color: #fff;
       font-family: 'Segoe UI', sans-serif;
-      color: white;
+      margin: 0;
+      padding: 0;
     }
-
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
     .card {
       background: #16161d;
-      border: 2px solid #ff3232;
+      border: 3px solid #ff3232;
       border-radius: 14px;
       padding: 24px;
-      max-width: 800px;
-      margin: 40px auto;
-      box-shadow: 0 0 20px rgba(255, 50, 50, 0.2);
+      margin-bottom: 30px;
     }
-
     h2 {
       color: #ff3232;
       margin-bottom: 20px;
     }
-
     .script-box {
-      background: #0b0b10;
-      padding: 16px;
+      background: #1c1c25;
       border-radius: 10px;
-      border: 1px solid #333;
+      padding: 20px;
       margin-bottom: 20px;
     }
-
     .script-code {
-      background: #111;
-      padding: 10px;
-      border-radius: 6px;
-      font-family: monospace;
-      color: #0f0;
-      margin-bottom: 10px;
-      overflow-x: auto;
-    }
-
-    .copy-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, #ff3232, #ff0000);
-      color: white;
-      border: none;
-      padding: 10px 20px;
+      background: #0b0b10;
+      border: 1px solid #3a3a3a;
       border-radius: 10px;
-      cursor: pointer;
+      padding: 12px;
+      font-family: monospace;
+      color: #00ff00;
+      margin-bottom: 10px;
+      word-wrap: break-word;
+    }
+    .copy-btn {
+      background: linear-gradient(135deg, #ff0000, #ff3232);
+      color: #fff;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
       font-weight: bold;
-      margin-top: 10px;
+      cursor: pointer;
       transition: 0.2s;
     }
-
     .copy-btn:hover {
-      background: linear-gradient(135deg, #ff5555, #ff2222);
+      background: linear-gradient(135deg, #ff3232, #ff0000);
     }
-
-    .keybinds {
-      margin-top: 20px;
-    }
-
-    .keybind {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .key {
-      background: #2a2a35;
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .features h3 {
-      width: 100%;
-    }
-
     .warning {
       text-align: center;
       font-size: 14px;
-      color: #ccc;
-      margin: 20px;
+      color: #ff6464;
+      margin-top: 10px;
+    }
+    .keybinds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .keybind {
+      background: #1c1c25;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #2a2a35;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: 1 1 200px;
+    }
+    .key {
+      background: #ff3232;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .features li {
+      background: #1c1c25;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #2a2a35;
+      list-style: none;
     }
   </style>
 </head>
 <body>
+
+<div class="container">
+
   <div class="card">
     <h2>📜 Script Loadstring</h2>
     <div class="script-box">
-      <div class="script-code">loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</div>
+      <div class="script-code" id="main-script">loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()</div>
       <button class="copy-btn" onclick="copyScript()">COPIAR SCRIPT</button>
+    </div>
+
+    <h2>🔄 Alternativo</h2>
+    <div class="script-box">
       <div class="script-code" id="loadstring">loadstring(game:HttpGet("https://pastebin.com/raw/SPZ1NvDi"))()</div>
       <button class="copy-btn" id="copy-loadstring">Copiar Loadstring</button>
     </div>
 
-    <h2>Key IP-locked</h2>
+    <h2>🔐 Key IP-locked</h2>
     <a href="https://carlosmyllerfx-web.github.io/key-link/" class="copy-btn" target="_blank" rel="noopener">Abrir Site da Key</a>
   </div>
 
   <div class="card">
     <h2>🎮 Keybinds</h2>
     <div class="keybinds">
-      <div class="keybind">
-        <span>Abrir/Fechar GUI</span>
-        <span class="key">T</span>
-      </div>
-      <div class="keybind">
-        <span>Backstab</span>
-        <span class="key">Q</span>
-      </div>
-      <div class="keybind">
-        <span>Fly</span>
-        <span class="key">F</span>
-      </div>
+      <div class="keybind"><span>Abrir/Fechar GUI</span><span class="key">T</span></div>
+      <div class="keybind"><span>Backstab</span><span class="key">Q</span></div>
+      <div class="keybind"><span>Fly</span><span class="key">F</span></div>
     </div>
   </div>
 
   <div class="card">
     <h2>✨ Features</h2>
-    <div class="features">
-      <h3>Aimbot</h3>
-      <ul>
-        <li>Lock automático</li>
-        <li>Prediction suave</li>
-        <li>Team Check</li>
-      </ul>
-      <h3>Visuals</h3>
-      <ul>
-        <li>ESP</li>
-        <li>Highlight</li>
-        <li>Tracer</li>
-      </ul>
-      <h3>MISC</h3>
-      <ul>
-        <li>Fly</li>
-        <li>Auto Parry</li>
-        <li>Anti AFK</li>
-      </ul>
-    </div>
+    <ul class="features">
+      <li>Aimbot / Super Aimbot</li>
+      <li>ESP Ativado</li>
+      <li>Auto Parry</li>
+      <li>Hitbox Expander</li>
+      <li>Keybind Personalizável</li>
+      <li>Fly + NoClip</li>
+      <li>Skin Changer</li>
+      <li>Big Head, Headless, Sit</li>
+    </ul>
   </div>
 
-  <div class="warning">
-    © VORTHEX 2026 • Todos os direitos reservados.
-  </div>
+</div>
 
-  <script>
-    function copyScript() {
-      const script = 'loadstring(game:HttpGet("https://pastebin.com/raw/cW7cfaeG"))()';
-      navigator.clipboard.writeText(script).then(() => {
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = 'COPIADO! ✓';
-        btn.style.background = 'linear-gradient(135deg, #00ff00, #00aa00)';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.background = 'linear-gradient(135deg, #ff3232, #ff0000)';
-        }, 2000);
-      });
-    }
+<script>
+  function copyScript() {
+    const script = document.getElementById('main-script').textContent.trim();
+    navigator.clipboard.writeText(script).then(() => {
+      const btn = event.target;
+      const original = btn.textContent;
+      btn.textContent = 'COPIADO! ✓';
+      btn.style.background = 'linear-gradient(135deg, #00ff00, #00aa00)';
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.style.background = 'linear-gradient(135deg, #ff0000, #ff3232)';
+      }, 2000);
+    });
+  }
 
-    document.getElementById('copy-loadstring').onclick = async () => {
-      const text = document.getElementById('loadstring').textContent.trim();
-      try { await navigator.clipboard.writeText(text); } catch {}
-    };
-  </script>
+  document.getElementById('copy-loadstring').onclick = async () => {
+    const text = document.getElementById('loadstring').textContent.trim();
+    try { await navigator.clipboard.writeText(text); } catch {}
+  };
+</script>
+
 </body>
 </html>
